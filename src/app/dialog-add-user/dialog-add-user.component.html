@@ -1,43 +1,46 @@
-<h2 mat-dialog-title>User hinzufügen</h2>
-<mat-dialog-content>
-    <div>
-        <mat-form-field class="marginright" appearance="outline">
-            <mat-label>Vorname</mat-label>
-            <input [(ngModel)]="user.vorname" matInput placeholder="Placeholder">
-            <mat-hint>Bitte Vornamen eingeben</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Nachname</mat-label>
-            <input [(ngModel)]="user.nachname" matInput placeholder="Placeholder">
-            <mat-hint>Bitte Nachnamen eingeben</mat-hint>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="width100" appearance="outline">
-            <mat-label>Geburtsdatum</mat-label>
-            <input [(ngModel)]="user.geburtsdatum" matInput [matDatepicker]="picker" placeholder="Choose a date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="width100" appearance="outline">
-            <mat-label>Straße und Hausnummer</mat-label>
-            <input [(ngModel)]="user.street" matInput placeholder="Placeholder">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field class="marginright" appearance="outline">
-            <mat-label>Postleihzahl</mat-label>
-            <input [(ngModel)]="user.postleihzahl" matInput placeholder="Placeholder">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Ort</mat-label>
-            <input [(ngModel)]="user.ort" matInput placeholder="Placeholder">
-        </mat-form-field>
-    </div>
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-button>Abbrechen</button>
-    <button (click)="speichern()" mat-button cdkFocusInitial>Speichern</button>
-</mat-dialog-actions>
+<div class="dialogContainer">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <h2 mat-dialog-title>User hinzufügen</h2>
+    <mat-dialog-content>
+        <div>
+            <mat-form-field class="marginright" appearance="outline">
+                <mat-label>Vorname</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.vorname" matInput placeholder="Placeholder">
+                <mat-hint>Bitte Vornamen eingeben</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Nachname</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.nachname" matInput placeholder="Placeholder">
+                <mat-hint>Bitte Nachnamen eingeben</mat-hint>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="width100" appearance="outline">
+                <mat-label>Geburtsdatum</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.geburtsdatum" matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="width100" appearance="outline">
+                <mat-label>Straße und Hausnummer</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Placeholder">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="marginright" appearance="outline">
+                <mat-label>Postleihzahl</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.postleihzahl" matInput placeholder="Placeholder">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Ort</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.ort" matInput placeholder="Placeholder">
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button [disabled]="loading" mat-button>Abbrechen</button>
+        <button [disabled]="loading" (click)="speichern()" mat-button cdkFocusInitial>Speichern</button>
+    </mat-dialog-actions>
+</div>

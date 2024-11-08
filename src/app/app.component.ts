@@ -9,6 +9,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { inject } from '@angular/core';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -19,4 +22,5 @@ import { MatNativeDateModule } from '@angular/material/core';
 })
 export class AppComponent {
   title = 'myCRM';
+  firestore: Firestore = inject(Firestore);
 }
