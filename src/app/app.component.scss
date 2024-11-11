@@ -17,6 +17,9 @@
     min-height: 56px;
     display: flex;
     align-items: center;
+    >h1 {
+        color: rgb(105, 240, 174);
+    }
 }
 
 mat-toolbar,

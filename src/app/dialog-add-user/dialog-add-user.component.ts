@@ -55,4 +55,5 @@ export class DialogAddUserComponent {
       console.error('Fehler beim Hinzufügen des Nutzers:', error);
     }
   }
-}
+
+  }

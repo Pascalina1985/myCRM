@@ -1,3 +1,8 @@
+mat-card {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .addButton {
     position: absolute;
     right: 56px;
@@ -6,6 +11,33 @@
 
 .userTable {
     width: 100%;
+    border-collapse: collapse;
+    tr {
+        border-bottom: 1px solid white;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(105, 240, 174);
+            color: rgb(48, 48, 48);
+        }
+        &:last-child {
+            border-bottom: 0;
+        }
+        &:first-child {
+            cursor: unset;
+            background-color: unset;
+        }
+        td {
+            height: 48px;
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+        th {
+            &:first-child {
+                padding-left: 16px;
+            }
+        }
+    }
     th {
         color: rgb(105, 240, 174);
         text-align: start;

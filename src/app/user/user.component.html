@@ -7,11 +7,11 @@
                 <th>Email</th>
                 <th>Ort</th>
             </tr>
-            <tr>
-                <td>fsdfsdf</td>
-                <td>fsdfsdf</td>
-                <td>fsdfsdf</td>
-                <td>fsdfsdf</td>
+            <tr *ngFor="let user of allUsers" [routerLink]="['/user-detail', user.id]">
+                <td>{{user.vorname}}</td>
+                <td>{{user.nachname}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.ort}}</td>
             </tr>
         </table>
     </mat-card-content>
