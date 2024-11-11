@@ -1,1 +1,19 @@
-<p>user-detail works!</p>
+<mat-card class="user-detail-header" appearance="outlined">
+    <div class="profile-area">
+        <img class="profile-img" src="assets/img/avatar-3637425_640.png" alt="">
+        <div class="user-details">
+            <h2>{{user.vorname}} {{user.nachname}}</h2><br> {{user.email}}
+        </div>
+    </div>
+</mat-card>
+<mat-card class="mt-32">
+    <div class="padding">
+        <button (click)="openAdressDialog()" class="buttonIcon" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        <mat-card-title>Adresse</mat-card-title>
+        <mat-card-content>
+            {{user.street}} <br>{{user.postleihzahl}} {{user.ort}}
+        </mat-card-content>
+    </div>
+</mat-card>

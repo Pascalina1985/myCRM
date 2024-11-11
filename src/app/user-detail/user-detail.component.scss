@@ -1,0 +1,49 @@
+.user-detail-header {
+    min-height: 250px;
+    background-color: rgb(105, 240, 174);
+    color: rgb(48, 48, 48);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.profile-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.profile-area {
+    display: flex;
+}
+
+.user-details {
+    margin-left: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100px;
+    h2 {
+        margin-bottom: 0;
+    }
+}
+
+.mt-32 {
+    margin-top: 32px !important;
+}
+
+.padding {
+    padding-left: 16px;
+}
+
+mat-card-content {
+    padding: 0;
+}
+
+.buttonIcon {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
