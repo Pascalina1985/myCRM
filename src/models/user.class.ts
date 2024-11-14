@@ -6,16 +6,17 @@ export class User {
     street: string;
     postleihzahl: number;
     ort: string;
-
+  
     constructor(
-       obj?: any
+      obj?: Partial<User>
     ) {
-        this.vorname = obj? obj.vorname: '';
-        this.nachname = obj? obj.nachname: '';
-        this.email = obj? obj.email: '';
-        this.geburtsdatum = obj? obj.geburtsdatum: '';
-        this.street = obj? obj.street: '';
-        this.postleihzahl = obj? obj.postleihzahl: '';
-        this.ort = obj? obj.ort: '';
+      this.vorname = obj?.vorname ?? '';  // Standardwert leeres String
+      this.nachname = obj?.nachname ?? '';  // Standardwert leeres String
+      this.email = obj?.email ?? '';  // Standardwert leeres String
+      this.geburtsdatum = obj?.geburtsdatum ?? 0;  // Standardwert 0 für number
+      this.street = obj?.street ?? '';  // Standardwert leeres String
+      this.postleihzahl = obj?.postleihzahl ?? 0;  // Standardwert 0 für number
+      this.ort = obj?.ort ?? '';  // Standardwert leeres String
     }
-}
+  }
+  

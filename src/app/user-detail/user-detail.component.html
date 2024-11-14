@@ -1,4 +1,7 @@
 <mat-card class="user-detail-header" appearance="outlined">
+    <button [matMenuTriggerFor]="userMenu" class="buttonIcon" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>more_vert</mat-icon>
+      </button>
     <div class="profile-area">
         <img class="profile-img" src="assets/img/avatar-3637425_640.png" alt="">
         <div class="user-details">
@@ -8,9 +11,16 @@
 </mat-card>
 <mat-card class="mt-32">
     <div class="padding">
-        <button (click)="openAdressDialog()" class="buttonIcon" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <button [matMenuTriggerFor]="adressMenu" class="buttonIcon" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
             <mat-icon>more_vert</mat-icon>
           </button>
+        <mat-menu #adressMenu="matMenu">
+            <button (click)="editMenu()" mat-menu-item>Bearbeiten</button>
+        </mat-menu>
+        <mat-menu #userMenu="matMenu">
+            <button (click)="editUser()" mat-menu-item>Bearbeiten</button>
+            <button (click)="deleteUser()" mat-menu-item>Löschen</button>
+        </mat-menu>
         <mat-card-title>Adresse</mat-card-title>
         <mat-card-content>
             {{user.street}} <br>{{user.postleihzahl}} {{user.ort}}

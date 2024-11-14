@@ -1,0 +1,26 @@
+<div class="dialogContainer">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <h2 mat-dialog-title>Adresse bearbeiten</h2>
+    <mat-dialog-content>
+        <div>
+            <mat-form-field class="width100" appearance="outline">
+                <mat-label>Straße und Hausnummer</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Straße und Hausnummer">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="marginright" appearance="outline">
+                <mat-label>Postleihzahl</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.postleihzahl" matInput placeholder="Postleihzahl">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Ort</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.ort" matInput placeholder="Wohnort">
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button [disabled]="loading" (click)="this.dialogRef.close()" mat-button>Abbrechen</button>
+        <button [disabled]="loading" (click)="speichern()" mat-button cdkFocusInitial>Speichern</button>
+    </mat-dialog-actions>
+</div>
