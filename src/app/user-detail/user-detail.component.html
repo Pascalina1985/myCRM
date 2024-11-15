@@ -2,6 +2,9 @@
     <button [matMenuTriggerFor]="userMenu" class="buttonIcon" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>more_vert</mat-icon>
       </button>
+    <button [routerLink]="['/notizen', userId]" matTooltip="Notizen hinzufügen" matTooltipPosition="left" class="addButton" mat-fab aria-label="Example icon button with a delete icon">
+        <mat-icon>add</mat-icon>
+      </button>
     <div class="profile-area">
         <img class="profile-img" src="assets/img/avatar-3637425_640.png" alt="">
         <div class="user-details">

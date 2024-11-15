@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, RouterLink } from '@angular/router';
 import { Firestore, doc, docData, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { DocumentData } from '@firebase/firestore';
@@ -20,13 +20,15 @@ import { DialogAdressComponent } from '../dialog-adress/dialog-adress.component'
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from '../user/user.component';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
+import { NotizenComponent } from '../notizen/notizen.component';
 
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [MatCardModule, MatIconModule, MatMenuModule, CommonModule],
+  imports: [MatCardModule, MatIconModule, MatMenuModule, CommonModule, MatTooltipModule, RouterLink],
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss']
 })

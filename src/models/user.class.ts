@@ -6,6 +6,7 @@ export class User {
     street: string;
     postleihzahl: number;
     ort: string;
+    notiz: string;
   
     constructor(
       obj?: Partial<User>
@@ -17,6 +18,7 @@ export class User {
       this.street = obj?.street ?? '';  // Standardwert leeres String
       this.postleihzahl = obj?.postleihzahl ?? 0;  // Standardwert 0 für number
       this.ort = obj?.ort ?? '';  // Standardwert leeres String
+      this.notiz = obj?.notiz ?? '';
     }
   }
   
