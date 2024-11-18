@@ -6,7 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
-import { Firestore, doc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, doc, setDoc, updateDoc, arrayUnion } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -35,7 +35,13 @@ export class NotizenComponent {
   async saveNotes() {
     try {
       const userDocRef = doc(this.firestore, `users/${this.userId}`);
-      await updateDoc(userDocRef, { notiz: this.noteContent }); // Aktualisiert das notiz-Feld im User-Dokument
+      const newNote = {
+        text: this.noteContent,
+        date: new Date().getTime()  // Speichert das Datum als Millisekunden
+      };
+      
+      // Füge die neue Notiz mit Datum zum Array der bestehenden Notizen hinzu
+      await updateDoc(userDocRef, { notiz: arrayUnion(newNote) });
       console.log('Notiz wurde gespeichert.');
       this.router.navigate([`/notizen-anzeige/${this.userId}`]);
     } catch (error) {
