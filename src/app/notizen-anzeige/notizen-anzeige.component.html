@@ -14,8 +14,10 @@
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-button>Bearbeiten</button>
-            <button (click)="deleteNotiz()" mat-button>Löschen</button>
+            <button (click)="deleteNotiz(notiz)" mat-button>Löschen</button>
         </mat-card-actions>
     </ng-container>
 </mat-card>
+<button matTooltip="Zurück zum User" [routerLink]="['/user-detail', userId]" class="backToButton" mat-fab aria-label="Example icon button with a delete icon">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>

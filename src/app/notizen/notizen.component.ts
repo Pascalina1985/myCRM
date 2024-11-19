@@ -4,7 +4,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { Firestore, doc, setDoc, updateDoc, arrayUnion } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-notizen',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule],
+  imports: [MatButtonModule, MatCardModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, RouterModule],
   templateUrl: './notizen.component.html',
   styleUrl: './notizen.component.scss'
 })

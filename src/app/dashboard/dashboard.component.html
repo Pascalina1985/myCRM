@@ -1,1 +1,10 @@
-<p>dashboard works!</p>
+<button class="userAuswahlbutton" mat-button [matMenuTriggerFor]="menu">Bitte Nutzer wählen <mat-icon>add</mat-icon></button>
+
+<mat-menu #menu="matMenu">
+    <!-- Iteriere durch alle Benutzer und zeige ihre Namen im Menü -->
+    <ng-container *ngFor="let user of users; let i = index">
+        <button [routerLink]="['/notizen-anzeige', userIds[i]]" mat-menu-item>
+      {{ user.vorname }} {{ user.nachname }}
+    </button>
+    </ng-container>
+</mat-menu>
