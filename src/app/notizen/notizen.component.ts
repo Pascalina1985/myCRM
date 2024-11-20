@@ -24,12 +24,9 @@ export class NotizenComponent {
   constructor(private route: ActivatedRoute){}
 
   ngOnInit(): void {
-    // Zugriff auf die userId, die als Routenparameter übergeben wurde
-    this.route.params.subscribe(params => {
+      this.route.params.subscribe(params => {
       this.userId = params['userId'];
-      console.log("UserId erhalten: ", this.userId);
-      // Hier kannst du zusätzliche Daten abrufen, z.B. den User basierend auf userId laden
-    });
+      });
   }
 
   async saveNotes() {
@@ -37,12 +34,10 @@ export class NotizenComponent {
       const userDocRef = doc(this.firestore, `users/${this.userId}`);
       const newNote = {
         text: this.noteContent,
-        date: new Date().getTime()  // Speichert das Datum als Millisekunden
+        date: new Date().getTime()  
       };
       
-      // Füge die neue Notiz mit Datum zum Array der bestehenden Notizen hinzu
       await updateDoc(userDocRef, { notiz: arrayUnion(newNote) });
-      console.log('Notiz wurde gespeichert.');
       this.router.navigate([`/notizen-anzeige/${this.userId}`]);
     } catch (error) {
       console.error('Fehler beim Speichern der Notiz:', error);

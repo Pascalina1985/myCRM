@@ -49,7 +49,6 @@ export class DialogAddUserComponent {
     try {
       const result = await addDoc(usersCollection, { ...this.user });
       this.loading = false;
-      console.log('Nutzer erfolgreich hinzugefügt', result);
       this.dialogRef.close();
     } catch (error) {
       console.error('Fehler beim Hinzufügen des Nutzers:', error);

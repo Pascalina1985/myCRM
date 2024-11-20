@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, RouterLink, UserComponent, DashboardComponent, MatDialogModule, MatDatepickerModule, MatNativeDateModule],
+  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatSidenavModule, MatIconModule, RouterLink, MatDialogModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

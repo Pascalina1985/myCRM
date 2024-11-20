@@ -27,11 +27,8 @@ export class NotizenAnzeigeComponent {
   }
 
   ngOnInit(): void {
-    // Den Parameter 'userId' aus der URL holen
     this.userId = this.route.snapshot.paramMap.get('userId') || '';
-    console.log(this.userId);
-
-    // Falls userId existiert, hole die Benutzerdaten aus Firestore
+    
     if (this.userId) {
       this.getSingleUser();
     }
@@ -46,12 +43,10 @@ export class NotizenAnzeigeComponent {
   async deleteNotiz(notiz: { text: string, date: number }) {
     try {
       const userDocRef = doc(this.firestore, `users/${this.userId}`);
-      // Entfernt die spezifische Notiz aus der Datenbank
-      await updateDoc(userDocRef, {
+       await updateDoc(userDocRef, {
         notiz: arrayRemove(notiz)
       });
-      console.log('Notiz erfolgreich gelöscht:', notiz);
-    } catch (error) {
+      } catch (error) {
       console.error('Fehler beim Löschen der Notiz:', error);
     }
   }

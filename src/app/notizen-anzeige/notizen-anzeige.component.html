@@ -1,23 +1,23 @@
 <mat-card *ngIf="user$ | async as user" class="example-card" appearance="outlined">
     <ng-container *ngFor="let notiz of user.notiz; let i = index">
-        <!-- Für jede Notiz im Array wird ein eigener mat-card erstellt -->
-        <mat-card-header>
-            <div class="example-header-image"></div>
-            <mat-card-title>Notiz {{ i + 1 }}</mat-card-title>
-            <mat-card-subtitle>{{ notiz.date | date:'dd.MM.yyyy HH:mm' }} Uhr</mat-card-subtitle>
-            <!-- Datum der Notiz -->
-        </mat-card-header>
+        <mat-card class="notiz-card" [ngStyle]="{'border': '1px solid rgb(105,240,174)'}">
+            <mat-card-header>
+                <div class="example-header-image"></div>
+                <mat-card-title>Notiz {{ i + 1 }}</mat-card-title>
+                <mat-card-subtitle>{{ notiz.date | date:'dd.MM.yyyy HH:mm' }} Uhr</mat-card-subtitle>
+            </mat-card-header>
 
-        <mat-card-content>
-            <p>{{ notiz.text }}</p>
-            <!-- Zeigt den Text der Notiz an -->
-        </mat-card-content>
+            <mat-card-content>
+                <p>{{ notiz.text }}</p>
+            </mat-card-content>
 
-        <mat-card-actions>
-            <button (click)="deleteNotiz(notiz)" mat-button>Löschen</button>
-        </mat-card-actions>
+            <mat-card-actions>
+                <button (click)="deleteNotiz(notiz)" mat-button>Löschen</button>
+            </mat-card-actions>
+        </mat-card>
     </ng-container>
 </mat-card>
+
 <button matTooltip="Zurück zum User" [routerLink]="['/user-detail', userId]" class="backToButton" mat-fab aria-label="Example icon button with a delete icon">
     <mat-icon>exit_to_app</mat-icon>
   </button>

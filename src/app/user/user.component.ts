@@ -43,7 +43,6 @@ export class UserComponent {
 
     ngOnInit(): void {
       this.users$.subscribe(users => {
-        console.log('Aktualisierte Benutzerdaten:', users);
         this.allUsers = users;
         });
     }

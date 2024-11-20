@@ -37,7 +37,7 @@ export class UserDetailComponent implements OnInit {
   userId = '';
   user$: Observable<DocumentData | undefined> | undefined;
   user: User = new User();
-  route: ActivatedRoute = inject(ActivatedRoute);  // Injektion der Route
+  route: ActivatedRoute = inject(ActivatedRoute);  
   router: Router = inject(Router);  
 
   constructor( public dialog: MatDialog) {}
@@ -74,7 +74,6 @@ export class UserDetailComponent implements OnInit {
       const userDocRef = doc(this.firestore, `users/${this.userId}`);
       
       await deleteDoc(userDocRef);
-            console.log(`User with ID ${this.userId} has been deleted.`);
             this.router.navigate(['/user']);
     } catch (error) {
       console.error("Error deleting user: ", error);

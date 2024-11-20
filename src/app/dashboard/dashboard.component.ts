@@ -33,14 +33,11 @@ export class DashboardComponent implements OnInit {
     const usersCollection = collection(this.firestore, 'users');
     this.user$ = collectionData(usersCollection, { idField: 'id' });
 
-    // Abonniere die Observable und speichere die Benutzer im lokalen Array
     this.user$.subscribe(
       (usersData) => {
-        this.users = usersData.map(user => new User(user)); // Mappe auf User-Objekte
-        console.log('Benutzer erfolgreich geladen:', this.users);
+        this.users = usersData.map(user => new User(user)); 
         this.userIds = usersData.map(user => user['id']); 
-        console.log('Alle User IDs:', this.userIds);
-      },
+        },
       (error) => {
         console.error('Fehler beim Laden der Benutzer:', error);
       }

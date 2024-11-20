@@ -39,7 +39,6 @@ export class DialogAdressComponent {
   async speichern() {
     this.loading = true;
     try {
-      // Hier ersetzen Sie 'userId' durch die tatsächliche ID des zu aktualisierenden Benutzers
       const userDocRef = doc(this.firestore, `users/${this.userId}`);
       await updateDoc(userDocRef, { ...this.user });
     } catch (error) {
