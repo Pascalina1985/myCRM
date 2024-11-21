@@ -8,3 +8,13 @@
 .green {
     border: 2px solid rgb(105, 240, 174);
 }
+
+.noticeDeleteButton {
+    background-color: rgb(106, 240, 174);
+    color: rgb(48, 48, 48) !important;
+}
+
+.buttonSlide {
+    display: flex;
+    justify-content: space-between;
+}

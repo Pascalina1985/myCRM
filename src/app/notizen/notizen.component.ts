@@ -8,11 +8,12 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { Firestore, doc, setDoc, updateDoc, arrayUnion } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import {MatRadioModule} from '@angular/material/radio';
 
 @Component({
   selector: 'app-notizen',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, RouterModule],
+  imports: [MatButtonModule, MatCardModule, MatSelectModule, MatInputModule, MatFormFieldModule, FormsModule, RouterModule, MatRadioModule],
   templateUrl: './notizen.component.html',
   styleUrl: './notizen.component.scss'
 })
@@ -21,6 +22,9 @@ export class NotizenComponent {
   noteContent: string = '';
   userId: string = '';
   router: Router = inject(Router);
+  bemerkung: string = '';
+  kategorie: string = '';
+  prio: string = '';
   constructor(private route: ActivatedRoute){}
 
   ngOnInit(): void {
@@ -34,7 +38,10 @@ export class NotizenComponent {
       const userDocRef = doc(this.firestore, `users/${this.userId}`);
       const newNote = {
         text: this.noteContent,
-        date: new Date().getTime()  
+        date: new Date().getTime(),
+        bemerkung: this.bemerkung,
+        kategorie: this.kategorie,
+        prio: this.prio,
       };
       
       await updateDoc(userDocRef, { notiz: arrayUnion(newNote) });

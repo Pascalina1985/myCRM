@@ -6,9 +6,22 @@
     </mat-card-header>
     <mat-card-content>
         <mat-form-field class="width100">
-            <mat-label>Textarea</mat-label>
+            <mat-label>Notiz eintragen</mat-label>
             <textarea [(ngModel)]="noteContent" matInput></textarea>
         </mat-form-field>
+        <mat-form-field class="width100">
+            <mat-label>Bemerkung eintragen</mat-label>
+            <textarea [(ngModel)]="bemerkung" matInput></textarea>
+        </mat-form-field>
+        <mat-radio-group class="radioGroup" aria-label="Select an option" [(ngModel)]="kategorie">
+            <mat-radio-button value="arbeit">Arbeit</mat-radio-button>
+            <mat-radio-button value="privat">Privat</mat-radio-button>
+        </mat-radio-group>
+        <mat-radio-group class="radioGroup" aria-label="Select an option" [(ngModel)]="prio">
+            <mat-radio-button value="Hoch">Hoch</mat-radio-button>
+            <mat-radio-button value="Mittel">Mittel</mat-radio-button>
+            <mat-radio-button value="Niedrig">Niedrig</mat-radio-button>
+        </mat-radio-group>
     </mat-card-content>
     <mat-card-actions class="format">
         <button [routerLink]="['/user-detail', userId]" mat-button>Abbrechen</button>
