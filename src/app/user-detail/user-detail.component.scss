@@ -16,10 +16,11 @@
 
 .profile-area {
     display: flex;
+    flex-direction: column;
+    padding-left: 16px;
 }
 
 .user-details {
-    margin-left: 32px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

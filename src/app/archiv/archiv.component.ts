@@ -34,7 +34,7 @@ export class ArchivComponent {
 
 getArchivedNotizen(user: any): any[] {
   if (user?.notiz && Array.isArray(user.notiz)) {
-      return user.notiz.filter((notiz: any) => notiz.erledigt === 'true');
+      return user.notiz.filter((notiz: any) => notiz.erledigt === true);
   }
   return [];
 }

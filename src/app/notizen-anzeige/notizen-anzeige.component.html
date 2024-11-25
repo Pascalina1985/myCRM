@@ -18,7 +18,11 @@
             <mat-card-actions class="buttonSlide">
                 <button class="noticeDeleteButton" (click)="deleteNotiz(notiz)" mat-button>Löschen</button>
                 <p>
-                    <mat-slide-toggle labelPosition="before" [checked]="notiz.erledigt === 'true'" (change)="changeNotiz(i, $event.checked ? 'true' : 'false')">Erledigt</mat-slide-toggle>
+                    <mat-slide-toggle labelPosition="before" [checked]="notiz.erledigt === true" (change)="changeNotiz(notiz, $event.checked ? true : false)">
+                        Erledigt
+                    </mat-slide-toggle>
+
+
                 </p>
             </mat-card-actions>
         </mat-card>

@@ -25,6 +25,7 @@ export class NotizenComponent {
   bemerkung: string = '';
   kategorie: string = '';
   prio: string = '';
+  erledigt: boolean = false;
   constructor(private route: ActivatedRoute){}
 
   ngOnInit(): void {
@@ -42,6 +43,7 @@ export class NotizenComponent {
         bemerkung: this.bemerkung,
         kategorie: this.kategorie,
         prio: this.prio,
+        erledigt: this.erledigt,
       };
       
       await updateDoc(userDocRef, { notiz: arrayUnion(newNote) });

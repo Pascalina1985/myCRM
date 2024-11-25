@@ -6,7 +6,7 @@ export class User {
     street: string;
     postleihzahl: number;
     ort: string;
-    notiz: { text: string, date: number, bemerkung: string, kategorie: string, prio: string, erledigt: string }[];
+    notiz: { text: string, date: number, bemerkung: string, kategorie: string, prio: string, erledigt: boolean }[];
   
     constructor(
       obj?: Partial<User>

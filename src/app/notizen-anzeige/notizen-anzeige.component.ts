@@ -38,17 +38,42 @@ export class NotizenAnzeigeComponent {
     this.getFilteredNotizen(User);
   }
 
-  getFilteredNotizen(user: any): any[] {
-    // Prüfe, ob user.notiz existiert und ein Array ist
-    if (user?.notiz && Array.isArray(user.notiz)) {
-        return user.notiz.filter((notiz: any) => 
-            notiz.erledigt === 'false' || 
-            notiz.erledigt === '' || 
-            notiz.erledigt === undefined
+  async changeNotiz(notiz: any, newStatus: boolean) {
+    try {
+      const userDocRef = doc(this.firestore, `users/${this.userId}`);
+      const userSnapshot = await getDoc(userDocRef);
+  
+      if (userSnapshot.exists()) {
+        const userData = userSnapshot.data();
+        const updatedNotizen = [...userData["notiz"]];
+  
+        const notizIndex = updatedNotizen.findIndex((n: any) => 
+          n.text === notiz.text && 
+          n.date === notiz.date
         );
+  
+        if (notizIndex !== -1) {
+          updatedNotizen[notizIndex].erledigt = newStatus;
+          await updateDoc(userDocRef, { notiz: updatedNotizen });
+          console.log('Nach Update:', updatedNotizen);
+        }
+      }
+    } catch (error) {
+      console.error('Fehler beim Aktualisieren der Notiz:', error);
     }
-    return []; // Leeres Array zurückgeben, wenn notiz nicht existiert
-}
+  }
+  
+  
+
+  getFilteredNotizen(user: any): any[] {
+    if (user?.notiz && Array.isArray(user.notiz)) {
+      return user.notiz.filter((notiz: any) => 
+        notiz.erledigt == false || notiz.erledigt === undefined 
+      );
+    }
+    return []; 
+  }
+  
 
 
 
@@ -68,24 +93,5 @@ export class NotizenAnzeigeComponent {
     }
   }
 
-  async changeNotiz(index: number, newStatus: string) {
-    try {
-      const userDocRef = doc(this.firestore, `users/${this.userId}`);
-      
-      const userSnapshot = await getDoc(userDocRef);
-      if (userSnapshot.exists()) {
-        const userData = userSnapshot.data();
-  
-        const updatedNotizen = [...userData["notiz"]];
-   
-        updatedNotizen[index].erledigt = newStatus;
-  
-        await updateDoc(userDocRef, { notiz: updatedNotizen });
-        console.log('Notiz erfolgreich aktualisiert:', updatedNotizen[index]);
-      }
-    } catch (error) {
-      console.error('Fehler beim Aktualisieren der Notiz:', error);
-    }
-  }
-    
+     
 }
