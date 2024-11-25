@@ -25,4 +25,5 @@ import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
 export class AppComponent {
   title = 'myCRM';
   firestore: Firestore = inject(Firestore);
+  
 }

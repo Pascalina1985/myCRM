@@ -1,5 +1,6 @@
 <mat-card *ngIf="user$ | async as user" class="example-card" appearance="outlined">
-    <ng-container *ngFor="let notiz of user.notiz; let i = index">
+    <ng-container *ngFor="let notiz of getFilteredNotizen(user); let i = index">
+
         <mat-card class="notiz-card" [ngStyle]="{'border': '1px solid rgb(105,240,174)'}">
             <mat-card-header>
                 <div class="example-header-image"></div>
@@ -26,4 +27,7 @@
 
 <button matTooltip="Zurück zum User" [routerLink]="['/user-detail', userId]" class="backToButton" mat-fab aria-label="Example icon button with a delete icon">
     <mat-icon>exit_to_app</mat-icon>
+  </button>
+<button matTooltip="Archivierte Notizen" [routerLink]="['/archiv', userId]" class="archivButton" mat-fab aria-label="Example icon button with a delete icon">
+    <mat-icon>autorenew</mat-icon>
   </button>

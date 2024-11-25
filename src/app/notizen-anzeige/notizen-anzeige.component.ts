@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import { FormsModule } from '@angular/forms';
+import { ArchivComponent } from '../archiv/archiv.component';
 
 
 @Component({
@@ -34,7 +35,22 @@ export class NotizenAnzeigeComponent {
     if (this.userId) {
       this.getSingleUser();
     }
+    this.getFilteredNotizen(User);
   }
+
+  getFilteredNotizen(user: any): any[] {
+    // Prüfe, ob user.notiz existiert und ein Array ist
+    if (user?.notiz && Array.isArray(user.notiz)) {
+        return user.notiz.filter((notiz: any) => 
+            notiz.erledigt === 'false' || 
+            notiz.erledigt === '' || 
+            notiz.erledigt === undefined
+        );
+    }
+    return []; // Leeres Array zurückgeben, wenn notiz nicht existiert
+}
+
+
 
   getSingleUser(): void {
     const userDocRef = doc(this.firestore, `users/${this.userId}`);
