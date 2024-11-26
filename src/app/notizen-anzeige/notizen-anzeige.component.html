@@ -8,7 +8,7 @@
                 <mat-card-subtitle>{{ notiz.date | date:'dd.MM.yyyy HH:mm' }} Uhr</mat-card-subtitle>
             </mat-card-header>
 
-            <mat-card-content>
+            <mat-card-content class="fontSize">
                 <p>Notiz: {{ notiz.text }}</p>
                 <p>Bemerkung: {{ notiz.bemerkung }}</p>
                 <p>Kategorie: {{ notiz.kategorie }}</p>
@@ -29,9 +29,9 @@
     </ng-container>
 </mat-card>
 
-<button matTooltip="Zurück zum User" [routerLink]="['/user-detail', userId]" class="backToButton" mat-fab aria-label="Example icon button with a delete icon">
+<button matTooltip="Zurück zum User" matTooltipPosition="above" [routerLink]="['/user-detail', userId]" class="backToButton" mat-fab aria-label="Example icon button with a delete icon">
     <mat-icon>exit_to_app</mat-icon>
   </button>
-<button matTooltip="Archivierte Notizen" [routerLink]="['/archiv', userId]" class="archivButton" mat-fab aria-label="Example icon button with a delete icon">
+<button matTooltip="Archivierte Notizen" matTooltipPosition="above" [routerLink]="['/archiv', userId]" class="archivButton" mat-fab aria-label="Example icon button with a delete icon">
     <mat-icon>autorenew</mat-icon>
   </button>

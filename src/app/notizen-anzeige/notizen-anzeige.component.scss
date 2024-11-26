@@ -1,5 +1,13 @@
+@media (max-width: 431px) {
+    .fontSize {
+        >p {
+            font-size: 10px !important;
+        }
+    }
+}
+
 .backToButton {
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
     margin: 64px;
@@ -23,5 +31,5 @@
     margin: 64px;
     right: 72px;
     bottom: 0;
-    position: absolute;
+    position: fixed;
 }

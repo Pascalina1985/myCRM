@@ -9,11 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-archiv',
   standalone: true,
-  imports: [MatCardModule, FormsModule, CommonModule, MatButtonModule, MatIconModule, RouterModule],
+  imports: [MatCardModule, FormsModule, CommonModule, MatButtonModule, MatIconModule, RouterModule, MatTooltipModule],
   templateUrl: './archiv.component.html',
   styleUrl: './archiv.component.scss'
 })
