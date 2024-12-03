@@ -9,6 +9,7 @@ import { User } from '../../models/user.class';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLinkActive, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,11 +23,18 @@ export class DashboardComponent implements OnInit {
   user$: Observable<DocumentData[]> | undefined;
   users: User[] = [];
   userIds: string[] = [];
-  constructor(private router: Router){
+  constructor(private router: Router, private auth: Auth){
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.auth.onAuthStateChanged((user) => {
+      if (!user) {
+        this.router.navigate(['/']);
+      } else {
+        this.getUsers();
+      }
+    });
+    
     }
 
   getUsers() {

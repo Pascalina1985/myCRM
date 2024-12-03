@@ -1,0 +1,19 @@
+<div>
+    <h1>Register</h1>
+    <form class="registerArea" (ngSubmit)="register()">
+        <mat-form-field appearance="fill">
+            <input type="email" [(ngModel)]="email" name="email" matInput placeholder="Email eingeben ..." required />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <input type="password" [(ngModel)]="password" name="password" matInput placeholder="Passwort eingeben ..." required />
+        </mat-form-field>
+        <div class="button-container">
+            <button class="registerButton" type="submit" mat-flat-button color="primary">
+                Register
+            </button>
+            <button class="registerButton marginLeft" mat-flat-button color="accent" (click)="navigateToLogin()">
+                Login
+            </button>
+        </div>
+    </form>
+</div>

@@ -72,3 +72,12 @@ mat-toolbar-row {
     padding-top: 16px;
     padding-right: 56px;
 }
+
+.logOutButtonLink {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    padding: 24px;
+    cursor: pointer;
+}

@@ -21,7 +21,8 @@ import { Firestore, collection, collectionData, addDoc } from '@angular/fire/fir
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { Auth } from '@angular/fire/auth';
 
 
 @Component({
@@ -36,15 +37,23 @@ export class UserComponent {
   users$: Observable<any[]>;
   allUsers: any[] = [];
 
-  constructor(public dialog: MatDialog){
+  constructor(public dialog: MatDialog, private auth: Auth, private router: Router){
     const usersCollection = collection(this.firestore, 'users');
     this.users$ = collectionData(usersCollection, { idField: 'id' });
     }
 
     ngOnInit(): void {
-      this.users$.subscribe(users => {
-        this.allUsers = users;
-        });
+      this.auth.onAuthStateChanged((user) => {
+        if (!user) {
+          // Kein Benutzer eingeloggt, Weiterleitung zur Login-Seite
+          this.router.navigate(['/']);
+        } else {
+          // Benutzer eingeloggt, Daten laden
+          this.users$.subscribe((users) => {
+            this.allUsers = users;
+          });
+        }
+      });
     }
 
     openDialog(){

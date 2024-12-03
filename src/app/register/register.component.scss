@@ -1,0 +1,24 @@
+.registerArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.marginLeft {
+    margin-left: 16px;
+}
+
+.registerButton {
+    min-width: 64px;
+    max-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(105, 240, 164);
+    color: rgb(48, 48, 48);
+    width: 100%;
+    padding: 12px;
+}
+
+.button-container {
+    display: flex;
+}
