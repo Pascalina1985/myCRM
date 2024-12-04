@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { Auth } from '@angular/fire/auth';
+import { NgZone } from '@angular/core';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class UserComponent {
   users$: Observable<any[]>;
   allUsers: any[] = [];
 
-  constructor(public dialog: MatDialog, private auth: Auth, private router: Router){
+  constructor(public dialog: MatDialog, private auth: Auth, private router: Router, private ngZone: NgZone){
     const usersCollection = collection(this.firestore, 'users');
     this.users$ = collectionData(usersCollection, { idField: 'id' });
     }
@@ -45,10 +46,10 @@ export class UserComponent {
     ngOnInit(): void {
       this.auth.onAuthStateChanged((user) => {
         if (!user) {
-          // Kein Benutzer eingeloggt, Weiterleitung zur Login-Seite
-          this.router.navigate(['/']);
+          this.ngZone.run(() => {
+            this.router.navigate(['/']); 
+          });
         } else {
-          // Benutzer eingeloggt, Daten laden
           this.users$.subscribe((users) => {
             this.allUsers = users;
           });

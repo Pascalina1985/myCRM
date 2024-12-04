@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -25,9 +25,16 @@ import { AuthService } from './auth.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  isLoggedIn = false;
   title = 'myCRM';
   firestore: Firestore = inject(Firestore);
   constructor(private authService: AuthService){}
+
+  ngOnInit(): void {
+    this.authService.onAuthStateChanged().subscribe((user) => {
+      this.isLoggedIn = !!user; // Setze true, wenn ein Benutzer eingeloggt ist
+    });
+  }
   
   async logOutC(){
     await this.authService.logOut()

@@ -1,11 +1,14 @@
-<div>
+<div class="logInContainer">
     <h1>Login</h1>
-    <form class="logInArea" (ngSubmit)="login()">
+    <form class="logInArea" (ngSubmit)="login($event)">
         <mat-form-field appearance="fill">
-            <input type="email" [(ngModel)]="email" name="email" matInput placeholder="Email eingeben ..." required />
+            <mat-label>Email eingeben</mat-label>
+            <input type="email" [(ngModel)]="email" name="email" matInput placeholder="Email eingeben ..." required email #emailInput="ngModel" />
+            <mat-error *ngIf="emailInput.errors?.['required']">E-Mail ist erforderlich.</mat-error>
+            <mat-error *ngIf="emailInput.errors?.['email']">Bitte geben Sie eine gültige E-Mail-Adresse ein.</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <input type="password" [(ngModel)]="password" name="password" matInput placeholder="Passwort eingeben ..." required />
+            <input type="password" [(ngModel)]="password" name="password" matInput placeholder="Passwort eingeben ..." required [pattern]="passwordPattern" />
         </mat-form-field>
         <div class="button-container">
             <button class="logInButton" type="submit" mat-flat-button color="primary">
@@ -14,7 +17,7 @@
             <button class="logInButton marginLeft" mat-flat-button color="warn" (click)="logout()">
           Logout
         </button>
-            <button class="logInButton marginLeft" mat-flat-button color="accent" (click)="register()">
+            <button type="button" class="logInButton marginLeft" mat-flat-button color="accent" (click)="register()">
           Registrieren
         </button>
         </div>

@@ -1,17 +1,23 @@
-<div>
-    <h1>Register</h1>
-    <form class="registerArea" (ngSubmit)="register()">
+<div class="registerContainer">
+    <h1>Bitte hier Registrieren</h1>
+    <form class="registerArea" (ngSubmit)="register($event)">
         <mat-form-field appearance="fill">
-            <input type="email" [(ngModel)]="email" name="email" matInput placeholder="Email eingeben ..." required />
+            <input type="text" [(ngModel)]="email" name="email" matInput placeholder="Email eingeben ..." required #emailInput="ngModel" [pattern]="emailPattern" />
+            <mat-error *ngIf="emailInput.errors?.['pattern']">
+                Bitte geben Sie eine gültige E-Mail-Adresse ein.
+            </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <input type="password" [(ngModel)]="password" name="password" matInput placeholder="Passwort eingeben ..." required />
+            <input type="password" [(ngModel)]="password" name="password" matInput placeholder="Passwort eingeben ..." required [pattern]="passwordPattern" #passwordInput="ngModel" />
+            <mat-error *ngIf="passwordInput.errors?.['pattern']">
+                Das Passwort muss mindestens 6 Zeichen lang sein!
+            </mat-error>
         </mat-form-field>
         <div class="button-container">
             <button class="registerButton" type="submit" mat-flat-button color="primary">
                 Register
             </button>
-            <button class="registerButton marginLeft" mat-flat-button color="accent" (click)="navigateToLogin()">
+            <button type="button" class="registerButton marginLeft" mat-flat-button color="accent" (click)="navigateToLogin()">
                 Login
             </button>
         </div>

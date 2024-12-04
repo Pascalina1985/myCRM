@@ -11,11 +11,11 @@
             </li>
             <li>
                 <a [routerLink]="['/user']">
-                    <span class="material-icons">person</span> User
+                    <span class="material-icons">person</span> Kontakt
                 </a>
             </li>
         </ul>
-        <a class="logOutButtonLink" (click)="logOutC()">
+        <a class="logOutButtonLink" (click)="logOutC()" *ngIf="isLoggedIn">
             <span class="material-icons">power_settings_new</span> Log out
         </a>
     </mat-drawer>

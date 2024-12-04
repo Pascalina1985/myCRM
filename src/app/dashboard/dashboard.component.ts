@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLinkActive, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { Auth } from '@angular/fire/auth';
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,19 +24,20 @@ export class DashboardComponent implements OnInit {
   user$: Observable<DocumentData[]> | undefined;
   users: User[] = [];
   userIds: string[] = [];
-  constructor(private router: Router, private auth: Auth){
+  constructor(private router: Router, private auth: Auth, private ngZone: NgZone){
   }
 
   ngOnInit(): void {
     this.auth.onAuthStateChanged((user) => {
       if (!user) {
-        this.router.navigate(['/']);
+          this.ngZone.run(() => {
+          this.router.navigate(['/']); 
+        });
       } else {
         this.getUsers();
       }
     });
-    
-    }
+  }
 
   getUsers() {
     const usersCollection = collection(this.firestore, 'users');
