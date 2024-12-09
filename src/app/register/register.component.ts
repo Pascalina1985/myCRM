@@ -20,8 +20,7 @@ export class RegisterComponent {
   email: string = '';
   password: string = '';
   passwordPattern = ".{6,}";
-  emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-
+ 
   constructor(private auth: Auth, private router: Router, private snackBar: MatSnackBar) {}
 
   async register(event: Event) {

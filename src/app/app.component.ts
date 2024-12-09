@@ -32,7 +32,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.authService.onAuthStateChanged().subscribe((user) => {
-      this.isLoggedIn = !!user; // Setze true, wenn ein Benutzer eingeloggt ist
+      this.isLoggedIn = !!user; 
     });
   }
   

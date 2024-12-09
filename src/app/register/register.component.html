@@ -2,7 +2,7 @@
     <h1>Bitte hier Registrieren</h1>
     <form class="registerArea" (ngSubmit)="register($event)">
         <mat-form-field appearance="fill">
-            <input type="text" [(ngModel)]="email" name="email" matInput placeholder="Email eingeben ..." required #emailInput="ngModel" [pattern]="emailPattern" />
+            <input type="text" [(ngModel)]="email" name="email" matInput placeholder="Email eingeben ..." required #emailInput="ngModel" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
             <mat-error *ngIf="emailInput.errors?.['pattern']">
                 Bitte geben Sie eine gültige E-Mail-Adresse ein.
             </mat-error>

@@ -4,12 +4,12 @@
             <h1>MyCRM</h1>
         </div>
         <ul class="menuList">
-            <li>
+            <li *ngIf="isLoggedIn">
                 <a [routerLink]="['/dashboard']">
                     <span class="material-icons">dashboard</span> Dashboard
                 </a>
             </li>
-            <li>
+            <li *ngIf="isLoggedIn">
                 <a [routerLink]="['/user']">
                     <span class="material-icons">person</span> Kontakt
                 </a>
