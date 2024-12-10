@@ -28,12 +28,14 @@ export class AppComponent {
   isLoggedIn = false;
   title = 'myCRM';
   firestore: Firestore = inject(Firestore);
+  user: any = null;
   constructor(private authService: AuthService){}
 
   ngOnInit(): void {
     this.authService.onAuthStateChanged().subscribe((user) => {
       this.isLoggedIn = !!user; 
-    });
+      this.user = user;
+      });
   }
   
   async logOutC(){

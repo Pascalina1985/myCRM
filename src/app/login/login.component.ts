@@ -29,14 +29,14 @@ export class LoginComponent {
     try {
       const userCredential = await signInWithEmailAndPassword(this.auth, this.email, this.password);
       console.log('User logged in:', userCredential.user);
-      this.snackBar.open('Login erfolgreich! Willkommen zurück!', 'Schließen', {
-        duration: 3000, // 3 Sekunden sichtbar
+      this.snackBar.open('Login erfolgreich! Willkommen zurück!', 'Viel Spaß', {
+        duration: 1500, 
         verticalPosition: 'top',
         horizontalPosition: 'center',
       });
       setTimeout(() => {
         this.router.navigate(['/dashboard']); 
-      }, 3000);
+      }, 1700);
       
     } catch (error) {
       console.error('Login failed:', error);

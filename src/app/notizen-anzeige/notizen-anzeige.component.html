@@ -27,6 +27,11 @@
             </mat-card-actions>
         </mat-card>
     </ng-container>
+    <ng-container *ngIf="getFilteredNotizen(user).length === 0">
+        <mat-card-content class="fontSize color">
+            <p>Noch keine Notiz vorhanden</p>
+        </mat-card-content>
+    </ng-container>
 </mat-card>
 
 <button matTooltip="Zurück zum User" matTooltipPosition="above" [routerLink]="['/user-detail', userId]" class="backToButton" mat-fab aria-label="Example icon button with a delete icon">

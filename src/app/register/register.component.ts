@@ -29,13 +29,13 @@ export class RegisterComponent {
       const userCredential = await createUserWithEmailAndPassword(this.auth, this.email, this.password);
       console.log('User registered:', userCredential.user);
       this.snackBar.open('Rigistrierung erfolgreich!', 'Viel Spaß', {
-        duration: 3000, // 3 Sekunden sichtbar
+        duration: 1700, 
         verticalPosition: 'top',
         horizontalPosition: 'center',
       });
       setTimeout(() => {
         this.router.navigate(['/dashboard']);
-      }, 3000);
+      }, 1700);
           } catch (error) {
       console.error('Registration failed:', error);
     }

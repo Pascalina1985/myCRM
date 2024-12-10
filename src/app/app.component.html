@@ -27,6 +27,9 @@
                   menu
                   </span>
                 <span>MyCRM</span>
+                <div class="loggedUserMail">
+                    <span *ngIf="isLoggedIn" class="material-icons">accessibility</span>{{user?.email}}
+                </div>
             </mat-toolbar-row>
         </mat-toolbar>
         <div class="routerContainer">
